@@ -1,0 +1,153 @@
+$primary-color: rgb(197, 197, 197);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100vh;
+}
+.universe {
+  font-size: 18px;
+  background-color: darkcyan;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  height: 100%;
+  .monitor {
+    position: relative;
+    background-color: $primary-color;
+    border-radius: 10px;
+    padding: 40px;
+    width: fit-content;
+    min-width: 450px;
+    height: 60vh;
+    min-height: 600px;
+    .screen {
+      background-color: #333;
+      height: 100%;
+      width: 700px;
+      min-height: 500px;
+      border: 10px solid #333;
+      overflow-y: scroll;
+      position: relative;
+      .black-screen {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        opacity: 1;
+        transition: .3s ease-in-out;
+      }
+      #title {
+        color: chartreuse;
+        background-color: black;
+        padding: 10px;
+      }
+      #editor {
+        width: 100%;
+        min-height: 150px;
+        resize: none;
+        border: none;
+        padding: 5px;
+        overflow: hidden;
+        background-color: whitesmoke;
+      }
+      #editor:focus {
+        outline: none;
+      }
+      form::after {
+        content: '~~~ Write your text above this line ~~~';
+        text-align: center;
+        background-color: whitesmoke;
+        display: block;
+        width: inherit;
+      }
+    }    
+  #turn-on {
+    color: rgb(250, 0, 0);
+    position: absolute;
+    border: 1px solid #666;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    bottom: 10px;
+    right: 10px;
+    background-color: #ccc;
+    box-shadow: inset 0px 3px 4px #ddd,
+                inset 0 -3px 4px #777;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+  }
+  #turn-on svg {
+    pointer-events: none;
+  }
+  #preview {
+    background-color: whitesmoke;
+    width: 100%;
+    min-height: 300px;
+    height: 60%;
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+  }
+  }
+  .keyboard-base {
+    padding: 20px;
+    background-color: rgb(197, 197, 197);
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(28, 20px);
+    grid-template-rows: repeat(4, 40px);
+    grid-gap: 5px;
+    user-select: none;
+  }
+  .key {
+    background-color: rgb(243, 243, 243);
+    border: 2px solid black;
+    border-radius: 5px;
+    grid-column: span 2;
+    font-size: 16px;
+    text-align: center;
+    display: grid;
+    place-items: center;
+  }
+  
+  .key:hover {
+  border: 1px solid #eeeeee;
+  
+  }
+  
+  .delete {
+    grid-column: span 4;
+  }
+  
+  .return {
+    grid-column: span 4;
+  }
+  
+  .space {
+    grid-column: span 12;
+  }
+
+}
+@media screen and (max-width: 900px){
+  .monitor {
+    transform: scale(0.8) !important;
+  }
+  .screen {
+    width: 450px !important;
+  }
+  .keyboard-base {
+    display: none !important;
+  }  
+}
