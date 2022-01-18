@@ -6,12 +6,11 @@ import { FaPowerOff } from "react-icons/fa";
 
 function App() {
   const blackScreen = useRef(null)
-  const [currentCode, setCurrentCode] = useState('');
+  const [currentCode, setCurrentCode] = useState('# Main header\n# Sub-header\n this is a [link](www.example.com) and this is `inline code`\n> Here you can see a blockquote with some **bold text**.\n<img src="https://cdn.iconscout.com/icon/free/png-256/react-1543566-1306069.png"/>');
   const [turnedOn, setTurnedOn] = useState(false)
   const hadnleTurnOn = (el) => {
     el.target.style.color = turnedOn ? "rgb(255, 0, 0)" : "rgb(173, 255, 47)";
-    setTurnedOn(!turnedOn)
-    turnedOn && setCurrentCode('');
+    setTurnedOn(!turnedOn);
   }
   useEffect(()=>{
     blackScreen.current.style.visibility = turnedOn ? 'hidden' : 'visible';
